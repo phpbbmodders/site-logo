@@ -1,0 +1,32 @@
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_SITELOGO_TITLE') }}</h1>
+
+<form id="acp_sitelogo" name="acp_sitelogo" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt><label for="sitelogo_url">{{ lang('ACP_SITELOGO_URL') ~ lang('COLON') }}</label><br>
+				<span>{{ lang('ACP_SITELOGO_URL_EXPLAIN') }}</span></dt>
+			<dd><input type="text" class="text medium" name="sitelogo_url" id="sitelogo_url" value="{{ SITELOGO_URL }}" /></dd>
+		</dl>
+		<dl>
+			<dt><label for="sitelogo_width">{{ lang('ACP_SITELOGO_WIDTH') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" class="text medium" name="sitelogo_width" id="sitelogo_width" value="{{ SITELOGO_WIDTH }}" /> {{ lang('PIXEL') }}</dd>
+		</dl>
+		<dl>
+			<dt><label for="sitelogo_height">{{ lang('ACP_SITELOGO_HEIGHT') ~ lang('COLON') }}</label></dt>
+			<dd><input type="text" class="text medium" name="sitelogo_height" id="sitelogo_height" value="{{ SITELOGO_HEIGHT }}" /> {{ lang('PIXEL') }}</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button2" type="submit" id="preview" name="preview" value="{{ lang('PREVIEW') }}" />
+		{{ S_FORM_TOKEN }}
+	</fieldset>
+
+</form>
+
+{% include 'overall_footer.html' %}

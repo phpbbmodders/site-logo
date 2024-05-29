@@ -1,0 +1,17 @@
+{% if SITELOGO_URL || SITELOGO_WIDTH || SITELOGO_HEIGHT %}
+	{% if SITELOGO_URL %}
+		{% set logoUrl = SITELOGO_URL %}
+		{% if not (logoUrl starts with 'http://' or logoUrl starts with 'https://') %}
+			{% set logoUrl = ROOT_PATH ~ SITELOGO_URL %}
+		{% endif %}
+	{% endif %}
+	<style>
+	.site_logo {
+		{% if SITELOGO_URL %}background-image: url("{{ logoUrl }}");{% endif %}
+		{% if SITELOGO_WIDTH %}width: {{ SITELOGO_WIDTH }}px;{% endif %}
+		{% if SITELOGO_HEIGHT %}height: {{ SITELOGO_HEIGHT }}px;{% endif %}
+		background-size: contain;
+		margin-top: -65px;
+	}
+	</style>
+{% endif %}

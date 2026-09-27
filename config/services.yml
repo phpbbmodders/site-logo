@@ -2,7 +2,7 @@ services:
     _defaults:
         autowire: true
 
-    kaileymsnay.sitelogo.listener:
-        class: kaileymsnay\sitelogo\event\main_listener
+    phpbbmodders.sitelogo.listener:
+        class: phpbbmodders\sitelogo\event\main_listener
         tags:
             - { name: event.listener }

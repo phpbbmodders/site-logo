@@ -4,6 +4,7 @@
  * Site Logo extension for the phpBB Forum Software package
  *
  * @copyright (c) 2023, Kailey Snay, https://www.snayhomelab.com/
+ * @copyright (c) 2026, phpBB Modders, https://www.phpbbmodders.com/
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */

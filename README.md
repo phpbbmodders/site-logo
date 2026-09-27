@@ -5,22 +5,27 @@ Allows board administrators to change the board's logo in the ACP.
 ## Installation
 
 1. Download the extension
-2. Copy the whole archive content to /ext/kaileymsnay/sitelogo
+2. Copy the whole archive content to /ext/phpbbmodders/sitelogo
 3. Go to your phpBB board > Administration Control Panel > Customise > Manage extensions > Site Logo: enable
 
 ## Update instructions
 
 1. Go to your phpBB board > Administration Control Panel > Customise > Manage extensions > Site Logo: disable
-2. Delete all files of the extension from /ext/kaileymsnay/sitelogo
+2. Delete all files of the extension from /ext/phpbbmodders/sitelogo
 3. Upload all the new files to the same locations
 4. Go to your phpBB board > Administration Control Panel > Customise > Manage extensions > Site Logo: enable
 5. Purge the board cache
 
-## Automated testing
+## Upgrading from `kaileymsnay/sitelogo`
 
-We use automated unit tests to prevent regressions. Check out our build below:
+This extension used to be installed as `kaileymsnay/sitelogo`. It is now `phpbbmodders/sitelogo`. To switch an existing board without losing the logo settings:
 
-master: [![Build Status](https://github.com/kaileymsnay/sitelogo/workflows/Tests/badge.svg)](https://github.com/kaileymsnay/sitelogo/actions)
+1. Go to your phpBB board > Administration Control Panel > Customise > Manage extensions > Site Logo: disable. Do **not** delete its data.
+2. Delete the `/ext/kaileymsnay/sitelogo` folder
+3. Upload this version to `/ext/phpbbmodders/sitelogo` and enable it. The old install's settings, ACP module and migration history are moved to the new name automatically.
+4. Purge the board cache
+
+If you disable the old extension from the command line (`bin/phpbbcli.php`) instead of the ACP, run `bin/phpbbcli.php cache:purge` before enabling the new one.
 
 ## License
 

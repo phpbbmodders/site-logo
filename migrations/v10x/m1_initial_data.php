@@ -4,11 +4,12 @@
  * Site Logo extension for the phpBB Forum Software package
  *
  * @copyright (c) 2023, Kailey Snay, https://www.snayhomelab.com/
+ * @copyright (c) 2026, phpBB Modders, https://www.phpbbmodders.com/
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
 
-namespace kaileymsnay\sitelogo\migrations\v10x;
+namespace phpbbmodders\sitelogo\migrations\v10x;
 
 class m1_initial_data extends \phpbb\db\migration\migration
 {
@@ -51,7 +52,7 @@ class m1_initial_data extends \phpbb\db\migration\migration
 				'acp',
 				'ACP_SITELOGO_TITLE',
 				[
-					'module_basename'	=> '\kaileymsnay\sitelogo\acp\main_module',
+					'module_basename'	=> '\phpbbmodders\sitelogo\acp\main_module',
 					'modes'				=> ['settings'],
 				],
 			]],

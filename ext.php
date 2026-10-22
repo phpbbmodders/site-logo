@@ -33,19 +33,23 @@ class ext extends \phpbb\extension\base
 	const NEW_NAMESPACE = '\\phpbbmodders\\sitelogo\\';
 
 	/**
-	 * Require phpBB 3.3.0+ and PHP 7.4+, and refuse to enable while the old
-	 * copy is still enabled; both would run at once and the old one's data
-	 * can't be moved while it's in use.
+	 * Check whether the extension can be enabled.
+	 * The current phpBB and PHP version should meet or
+	 * exceed the minimum version required by this extension:
 	 *
-	 * @return bool|array True if enableable, otherwise false or an array of reasons
+	 * @return bool|array
+	 * @access public
 	 */
 	public function is_enableable()
 	{
-		$config = $this->container->get('config');
+		$enableable = $this->check_phpbb_version() && $this->check_php_version();
 
-		if (!phpbb_version_compare($config['version'], '3.3.0', '>=') || !version_compare(PHP_VERSION, '7.4.0', '>='))
+		if (!$enableable)
 		{
-			return false;
+			$language = $this->container->get('language');
+			$language->add_lang('sitelogo_install', 'phpbbmodders/sitelogo');
+
+			return $language->lang('SITELOGO_NOT_ENABLEABLE');
 		}
 
 		if ($this->container->get('ext.manager')->is_enabled(self::OLD_EXT_NAME))
@@ -53,7 +57,7 @@ class ext extends \phpbb\extension\base
 			return ['Disable the old "' . self::OLD_EXT_NAME . '" extension first (keep its data, do not delete it).'];
 		}
 
-		return true;
+		return $enableable;
 	}
 
 	/**
@@ -162,5 +166,25 @@ class ext extends \phpbb\extension\base
 		}
 
 		return $class_name;
+	}
+
+	/**
+	 * Require phpBB 3.3.19 due to several security fixes in the phpBB software.
+	 *
+	 * @return bool
+	 */
+	protected function check_phpbb_version()
+	{
+		return phpbb_version_compare(PHPBB_VERSION, '3.3.19', '>=');
+	}
+
+	/**
+	 * Requires PHP 8.3.36 due to security fixes.
+	 *
+	 * @return bool
+	 */
+	protected function check_php_version()
+	{
+		return PHP_VERSION_ID >= 80336;
 	}
 }
